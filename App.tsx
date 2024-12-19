@@ -11,9 +11,12 @@ import HomeScreen from './components/screens/HomeScreen';
 //import UseStateText from './components/hooks/UseStateHook';
 //import UseEffectCounter from './components/hooks/UseEffecttext';
 //import UseRefText from './components/hooks/UseRefText';
+import useToogle from './components/hooks/CustomHook';
+import ClassBAseComponent from './components/classBasedComponent/ClassBaseComponent';
 
 function App(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isOn, toggleIsOn] = useToogle(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -27,6 +30,9 @@ function App(): React.JSX.Element {
           <Button onPress={toggleTheme} title="Dark Mode Light Mode" />
         </View>
         <HomeScreen />
+        <Button title={'Turn on to off'} onPress={toggleIsOn} />
+        <Text>{isOn ? 'on' : 'off'}</Text>
+        <ClassBAseComponent />
       </SafeAreaView>
     </ThemeContext.Provider>
   );
